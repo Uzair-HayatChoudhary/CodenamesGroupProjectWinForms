@@ -10,11 +10,16 @@ using System.Windows.Forms;
 
 namespace CodenamesGroupProjectWinForms
 {
-    public partial class Form1 : Form
+    public partial class BoardGame : Form
     {
-        public Form1()
+        public BoardGame()
         {
             InitializeComponent();
+        }
+
+        private void label1_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }
