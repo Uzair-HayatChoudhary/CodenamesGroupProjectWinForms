@@ -46,24 +46,25 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="BoardGame.cs">
+    <Compile Include="View\BoardGame.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="BoardGame.Designer.cs">
+    <Compile Include="View\BoardGame.Designer.cs">
       <DependentUpon>BoardGame.cs</DependentUpon>
     </Compile>
-    <Compile Include="MainRulesPage.cs">
+    <Compile Include="View\MainRulesPage.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="MainRulesPage.Designer.cs">
+    <Compile Include="View\MainRulesPage.Designer.cs">
       <DependentUpon>MainRulesPage.cs</DependentUpon>
     </Compile>
+    <Compile Include="Model\Card.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <EmbeddedResource Include="BoardGame.resx">
+    <EmbeddedResource Include="View\BoardGame.resx">
       <DependentUpon>BoardGame.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="MainRulesPage.resx">
+    <EmbeddedResource Include="View\MainRulesPage.resx">
       <DependentUpon>MainRulesPage.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
