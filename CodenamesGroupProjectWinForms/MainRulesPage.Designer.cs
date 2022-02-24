@@ -44,10 +44,10 @@
             // lblTitle
             // 
             this.lblTitle.AutoSize = true;
-            this.lblTitle.Font = new System.Drawing.Font("Times New Roman", 27.85714F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblTitle.Location = new System.Drawing.Point(670, 9);
+            this.lblTitle.Font = new System.Drawing.Font("Times New Roman", 36F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblTitle.Location = new System.Drawing.Point(645, 9);
             this.lblTitle.Name = "lblTitle";
-            this.lblTitle.Size = new System.Drawing.Size(287, 85);
+            this.lblTitle.Size = new System.Drawing.Size(366, 109);
             this.lblTitle.TabIndex = 0;
             this.lblTitle.Text = "RULES";
             // 
@@ -115,6 +115,7 @@
             // lblRule7
             // 
             this.lblRule7.Font = new System.Drawing.Font("Times New Roman", 15.85714F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblRule7.ForeColor = System.Drawing.Color.Black;
             this.lblRule7.Location = new System.Drawing.Point(38, 783);
             this.lblRule7.Name = "lblRule7";
             this.lblRule7.Size = new System.Drawing.Size(1523, 44);
@@ -135,9 +136,10 @@
             // 
             // btnStartGame
             // 
-            this.btnStartGame.BackColor = System.Drawing.Color.Snow;
+            this.btnStartGame.BackColor = System.Drawing.Color.DimGray;
             this.btnStartGame.Font = new System.Drawing.Font("Times New Roman", 15.85714F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnStartGame.Location = new System.Drawing.Point(685, 979);
+            this.btnStartGame.ForeColor = System.Drawing.Color.LightGray;
+            this.btnStartGame.Location = new System.Drawing.Point(701, 1004);
             this.btnStartGame.Name = "btnStartGame";
             this.btnStartGame.Size = new System.Drawing.Size(256, 79);
             this.btnStartGame.TabIndex = 9;
@@ -150,7 +152,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(12F, 25F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoSize = true;
-            this.BackColor = System.Drawing.Color.PeachPuff;
+            this.BackColor = System.Drawing.Color.Gainsboro;
             this.ClientSize = new System.Drawing.Size(1674, 1559);
             this.Controls.Add(this.btnStartGame);
             this.Controls.Add(this.label9);
@@ -162,8 +164,10 @@
             this.Controls.Add(this.lblRule2);
             this.Controls.Add(this.lblRule1);
             this.Controls.Add(this.lblTitle);
+            this.ForeColor = System.Drawing.Color.Black;
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.SizableToolWindow;
             this.Name = "MainRulesPage";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "MainRulesPage";
             this.ResumeLayout(false);
             this.PerformLayout();
