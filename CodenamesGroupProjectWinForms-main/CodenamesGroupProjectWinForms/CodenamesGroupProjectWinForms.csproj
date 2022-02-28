@@ -47,6 +47,9 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Model\BoardGameWords.cs" />
+    <Compile Include="Model\Clue.cs" />
+    <Compile Include="Model\Codenames.cs" />
+    <Compile Include="Model\Timer.cs" />
     <Compile Include="View\BoardGame.cs">
       <SubType>Form</SubType>
     </Compile>

@@ -6,58 +6,58 @@ using System.Threading.Tasks;
 
 namespace CodenamesGroupProjectWinForms.Model
 {
+    public enum TeamTurn
+    {
+        blue,
+        red
+    }
+    public enum TeamRole
+    {
+        spymaster, 
+        fieldAgent
+    }
     public class Codenames
     {
-        public enum TeamTurns{
-            red,
-            blue
-        }
-        public enum TeamRoles{
-            spymaster,
-            fieldOperative
+        private TeamRole teamRole;
+        private TeamTurn teamTurn;
+
+        public Codenames(int role, int turn)
+        {
+            teamRole = (TeamRole)role;
+            teamTurn = (TeamTurn)turn;
         }
 
-        private TeamTurns teamTurn;
-        private TeamRoles teamRole;
-
-        //Getters and setters for attributes
-        public TeamTurns TeamTurn
+        public  TeamRole TeamRole
+        {
+            get { return teamRole; }
+            set { teamRole = value; }
+        }
+        
+        public TeamTurn TeamTurn
         {
             get { return teamTurn; }
             set { teamTurn = value; }
         }
 
-        public TeamRoles TeamRole
+        public void generateBoard()
         {
-            get { return teamRole; }
-            set { teamRole = value; }
         }
 
-        public Codenames(string role, string turn)
+        public bool pickCard()
         {
-            
+            return true;
         }
 
-        public static void GenerateBoard()
+        public bool giveClue(Clue clue)
         {
-
+            return true;
         }
-        public void pickCards()
-        {
 
-        }
-        public void GiveClue(/*Clue clue*/)
-        {
-
-        }
         public void EndTurn()
         {
 
         }
-        public void CountCards()
-        {
 
-        }
 
     }
 }

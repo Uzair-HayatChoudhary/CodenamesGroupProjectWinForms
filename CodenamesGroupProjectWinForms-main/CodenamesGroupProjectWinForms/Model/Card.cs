@@ -6,18 +6,26 @@ using System.Threading.Tasks;
 
 namespace CodenamesGroupProjectWinForms.Model
 {
-     public class Card
+    public enum CardTypes
     {
-        public enum CardTypes
-        {
-            red,
-            blue,
-            assassin,
-            bystander
-        }
+        red,
+        blue,
+        assassin,
+        bystander
+    }
+    public class Card
+    {
+        
         private string word;
         private CardTypes cardType;
         private bool isFlipped;
+
+        public Card(string cardTitle, int cardType)
+        {
+            word = cardTitle;
+            CardType = (CardTypes)cardType;
+            isFlipped = false;
+        }
 
         public string Word
         {
