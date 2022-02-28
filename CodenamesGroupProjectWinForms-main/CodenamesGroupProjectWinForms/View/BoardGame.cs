@@ -44,97 +44,46 @@ namespace CodenamesGroupProjectWinForms
                 MessageBox.Show("There are not enough words in the list");
             }
 
-            //determining which cards will be what roles
-            //random to randomize which cards will have what roles
-            //temp number to test if the card was already chosen, and only add it to a team if it isnt chosen already
-            //index to go through all the arrays at the same index and making it easier to read
-            //roletypes of type card to make an array and give each card a type, the word associated to it, and if its flipped to false
-            //already chosen numbers to associate the words with their respective order in the game board with the number 
-
-           Random random = new Random();
-           int tempNumber;
-           int index = 1;
-           Card[] roleTypes = new Card[25];
-           int[] alreadyChosenNumbers = new int[25];
-           tempNumber = random.Next(1, 26);
-           alreadyChosenNumbers[0] = tempNumber;
-            bool isduplicate = false;
-
-            //choosing the assassin card
-            Card card = new Card(btn_list[0].Text.ToString(), 2);
-            roleTypes[0] = card;
-
-            //chosing cards for red team
-                for (int i = 0; i < 9; i++)
-                {
-                    tempNumber = random.Next(1, 26);
-                    for (int j = 0; j < index; j++)
-                    {
-                        if (alreadyChosenNumbers[j] == tempNumber)
-                        {
-                            isduplicate = true;
-                            break;
-                        }
-                    }
-                    if (isduplicate == false)
-                    {
-                        alreadyChosenNumbers[index] = tempNumber;
-                        Card tempCard = new Card(btn_list[index].Text.ToString(), 0);
-                        roleTypes[index] = tempCard;
-                        index++;
-                    }
-                }
-                isduplicate = false;
-            
-
-            //chosing cards for blue team
-            for (int i = 0; i < 8; i++)
+            Card[] roleTypes = new Card[25];
+            Random rnd =  rnd = new Random();
+            int tempNumber;
+            int counterRed = 0;
+            int counterBlue = 0;
+            int counterAssassin = 0;
+            int counterBystander = 0;
+            for (int i=0; i < 25;i++)
             {
-                tempNumber = random.Next(1, 26);
-                for (int j = 0; j < index; j++)
+                do
                 {
-                    if (alreadyChosenNumbers[j] == tempNumber)
-                    {
-                        isduplicate = true;
+                    tempNumber = rnd.Next(0, 4);
+                } while ((counterRed == 9 && tempNumber == 0) || (counterBlue == 8 && tempNumber == 1) || (counterAssassin == 1 && tempNumber == 2) || (counterBystander == 7 && tempNumber == 3));
+                
+                   
+                switch (tempNumber)
+                {
+                    case 0:
+                        counterRed++;
+                        Card card = new Card(btn_list[i].Text.ToString(), 0);
+                        roleTypes[i] = card;
                         break;
-                    }
-                }
-                if(isduplicate == false)
-                {
-                    alreadyChosenNumbers[index] = tempNumber;
-                    Card tempCard = new Card(btn_list[index].Text.ToString(), 1);
-                    roleTypes[index] = tempCard;
-                    index++;
-                }
-            }
+                    case 1:
+                        counterBlue++;
+                        Card card1 = new Card(btn_list[i].Text.ToString(), 1);
+                        roleTypes[i] = card1;
+                        break;
+                    case 2:
+                        counterAssassin++;
+                        Card card2 = new Card(btn_list[i].Text.ToString(), 2);
+                        roleTypes[i] = card2;
+                        break;
+                    default:
+                        counterBystander++;
+                        Card card3 = new Card(btn_list[i].Text.ToString(), 3);
+                        roleTypes[i] = card3;
+                        break;
 
-            //chosing cards for bystanders
-            try
-            {
-                for (int i = index; i < 7; i++)
-                {
-                    tempNumber = random.Next(1, 26);
-                    for (int j = 0; j < index; j++)
-                    {
-                        if (alreadyChosenNumbers[j] == tempNumber)
-                        {
-                            isduplicate = true;
-                            break;
-                        }
-                    }
-                    if (isduplicate == true)
-                    {
-                        alreadyChosenNumbers[index] = tempNumber;
-                        Card tempCard = new Card(btn_list[index].Text.ToString(), 3);
-                        roleTypes[index] = tempCard;
-                        index++;
-                    }
-                    isduplicate = false;
+
                 }
-            }
-            catch
-            {
-                Console.WriteLine("1");
             }
 
             //Showing the card colors for the spymaster

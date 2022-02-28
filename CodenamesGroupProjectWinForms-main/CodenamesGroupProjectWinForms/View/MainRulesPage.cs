@@ -24,5 +24,10 @@ namespace CodenamesGroupProjectWinForms
             newBoardGame.Show();
             this.Hide();
         }
+
+        private void lblRule3_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }
