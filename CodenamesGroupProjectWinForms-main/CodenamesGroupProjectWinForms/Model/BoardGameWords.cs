@@ -1,9 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-
-using System;
-using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
@@ -15,7 +11,7 @@ using System.Windows.Forms;
 
 namespace CodenamesGroupProjectWinForms.Model
 {
-    class BoardGameWords
+    public class BoardGameWords
     {
         private const int numberCards = 25;
 
@@ -100,13 +96,10 @@ namespace CodenamesGroupProjectWinForms.Model
 
         public void RemoveWord(string button_text)
         {
-            
             foreach (string word in boardWords)
-            {
-                
+            {  
                 if (word == button_text)
                 {
-                    
                     boardWords.Remove(word);
                     break;
                 }

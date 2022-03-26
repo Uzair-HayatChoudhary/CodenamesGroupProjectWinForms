@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using CodenamesGroupProjectWinForms.Model;
 
 namespace CodenamesGroupProjectWinForms.Model
 {
@@ -39,8 +40,11 @@ namespace CodenamesGroupProjectWinForms.Model
             set { teamTurn = value; }
         }
 
-        public void generateBoard()
+        public static List<string> GenerateBoard(BoardGameWords boardGameWords)
         {
+            boardGameWords.GenerateBoardGameWords("wordList.txt");
+            List<string> words_list = boardGameWords.GetBoardWords;
+            return words_list;
         }
 
         public bool pickCard()
@@ -48,16 +52,36 @@ namespace CodenamesGroupProjectWinForms.Model
             return true;
         }
 
-        public bool giveClue(Clue clue)
+        public static Clue giveClue(string hint, int guessAmount)
         {
-            return true;
+            Clue clue = new Clue(hint, guessAmount);
+            return clue;
         }
 
+        public static void changeTurn(Codenames gamestate)
+        {
+            if (gamestate.teamTurn == 0)
+            {
+                gamestate.teamTurn = (TeamTurn)1;
+            }
+            else
+            {
+                gamestate.teamTurn = (TeamTurn)0;
+            }
+
+            if(gamestate.teamRole == 0)
+            {
+                gamestate.teamRole = (TeamRole)1;
+            }
+            else
+            {
+                gamestate.teamRole= (TeamRole)0;
+            }
+        }
         public void EndTurn()
         {
 
         }
-
 
     }
 }
