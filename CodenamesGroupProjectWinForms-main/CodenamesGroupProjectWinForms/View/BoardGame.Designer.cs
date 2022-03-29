@@ -20,6 +20,8 @@
             base.Dispose(disposing);
         }
 
+        
+
         #region Windows Form Designer generated code
 
         /// <summary>
@@ -84,301 +86,301 @@
             // 
             this.btnCard1.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.125F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnCard1.Location = new System.Drawing.Point(26, 85);
-            this.btnCard1.Margin = new System.Windows.Forms.Padding(2);
+            this.btnCard1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.btnCard1.Name = "btnCard1";
             this.btnCard1.Size = new System.Drawing.Size(127, 73);
             this.btnCard1.TabIndex = 1;
             this.btnCard1.Text = "button1";
             this.btnCard1.UseVisualStyleBackColor = true;
-            this.btnCard1.Click += new System.EventHandler(this.btnCard1_Click);
+            this.btnCard1.Click += new System.EventHandler(this.pickCard);
             // 
             // btnCard16
             // 
             this.btnCard16.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.125F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnCard16.Location = new System.Drawing.Point(26, 315);
-            this.btnCard16.Margin = new System.Windows.Forms.Padding(2);
+            this.btnCard16.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.btnCard16.Name = "btnCard16";
             this.btnCard16.Size = new System.Drawing.Size(127, 73);
             this.btnCard16.TabIndex = 2;
             this.btnCard16.Text = "button2";
             this.btnCard16.UseVisualStyleBackColor = true;
-            this.btnCard16.Click += new System.EventHandler(this.btnCard16_Click);
+            this.btnCard16.Click += new System.EventHandler(this.pickCard);
             // 
             // btnCard11
             // 
             this.btnCard11.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.125F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnCard11.Location = new System.Drawing.Point(26, 238);
-            this.btnCard11.Margin = new System.Windows.Forms.Padding(2);
+            this.btnCard11.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.btnCard11.Name = "btnCard11";
             this.btnCard11.Size = new System.Drawing.Size(127, 73);
             this.btnCard11.TabIndex = 3;
             this.btnCard11.Text = "button3";
             this.btnCard11.UseVisualStyleBackColor = true;
-            this.btnCard11.Click += new System.EventHandler(this.btnCard11_Click);
+            this.btnCard11.Click += new System.EventHandler(this.pickCard);
             // 
             // btnCard6
             // 
             this.btnCard6.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.125F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnCard6.Location = new System.Drawing.Point(26, 162);
-            this.btnCard6.Margin = new System.Windows.Forms.Padding(2);
+            this.btnCard6.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.btnCard6.Name = "btnCard6";
             this.btnCard6.Size = new System.Drawing.Size(127, 73);
             this.btnCard6.TabIndex = 4;
             this.btnCard6.Text = "button4";
             this.btnCard6.UseVisualStyleBackColor = true;
-            this.btnCard6.Click += new System.EventHandler(this.btnCard6_Click);
+            this.btnCard6.Click += new System.EventHandler(this.pickCard);
             // 
             // btnCard21
             // 
             this.btnCard21.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.125F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnCard21.Location = new System.Drawing.Point(26, 391);
-            this.btnCard21.Margin = new System.Windows.Forms.Padding(2);
+            this.btnCard21.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.btnCard21.Name = "btnCard21";
             this.btnCard21.Size = new System.Drawing.Size(127, 73);
             this.btnCard21.TabIndex = 5;
             this.btnCard21.Text = "button5";
             this.btnCard21.UseVisualStyleBackColor = true;
-            this.btnCard21.Click += new System.EventHandler(this.btnCard21_Click);
+            this.btnCard21.Click += new System.EventHandler(this.pickCard);
             // 
             // btnCard5
             // 
             this.btnCard5.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.125F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnCard5.Location = new System.Drawing.Point(546, 85);
-            this.btnCard5.Margin = new System.Windows.Forms.Padding(2);
+            this.btnCard5.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.btnCard5.Name = "btnCard5";
             this.btnCard5.Size = new System.Drawing.Size(127, 73);
             this.btnCard5.TabIndex = 6;
             this.btnCard5.Text = "button6";
             this.btnCard5.UseVisualStyleBackColor = true;
-            this.btnCard5.Click += new System.EventHandler(this.btnCard5_Click);
+            this.btnCard5.Click += new System.EventHandler(this.pickCard);
             // 
             // btnCard4
             // 
             this.btnCard4.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.125F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnCard4.Location = new System.Drawing.Point(416, 85);
-            this.btnCard4.Margin = new System.Windows.Forms.Padding(2);
+            this.btnCard4.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.btnCard4.Name = "btnCard4";
             this.btnCard4.Size = new System.Drawing.Size(127, 73);
             this.btnCard4.TabIndex = 7;
             this.btnCard4.Text = "button7";
             this.btnCard4.UseVisualStyleBackColor = true;
-            this.btnCard4.Click += new System.EventHandler(this.btnCard4_Click);
+            this.btnCard4.Click += new System.EventHandler(this.pickCard);
             // 
             // btnCard3
             // 
             this.btnCard3.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.125F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnCard3.Location = new System.Drawing.Point(286, 85);
-            this.btnCard3.Margin = new System.Windows.Forms.Padding(2);
+            this.btnCard3.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.btnCard3.Name = "btnCard3";
             this.btnCard3.Size = new System.Drawing.Size(127, 73);
             this.btnCard3.TabIndex = 8;
             this.btnCard3.Text = "button8";
             this.btnCard3.UseVisualStyleBackColor = true;
-            this.btnCard3.Click += new System.EventHandler(this.btnCard3_Click);
+            this.btnCard3.Click += new System.EventHandler(this.pickCard);
             // 
             // btnCard2
             // 
             this.btnCard2.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.125F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnCard2.Location = new System.Drawing.Point(156, 85);
-            this.btnCard2.Margin = new System.Windows.Forms.Padding(2);
+            this.btnCard2.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.btnCard2.Name = "btnCard2";
             this.btnCard2.Size = new System.Drawing.Size(127, 73);
             this.btnCard2.TabIndex = 9;
             this.btnCard2.Text = "button9";
             this.btnCard2.UseVisualStyleBackColor = true;
-            this.btnCard2.Click += new System.EventHandler(this.btnCard2_Click);
+            this.btnCard2.Click += new System.EventHandler(this.pickCard);
             // 
             // btnCard7
             // 
             this.btnCard7.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.125F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnCard7.Location = new System.Drawing.Point(156, 162);
-            this.btnCard7.Margin = new System.Windows.Forms.Padding(2);
+            this.btnCard7.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.btnCard7.Name = "btnCard7";
             this.btnCard7.Size = new System.Drawing.Size(127, 73);
             this.btnCard7.TabIndex = 10;
             this.btnCard7.Text = "button10";
             this.btnCard7.UseVisualStyleBackColor = true;
-            this.btnCard7.Click += new System.EventHandler(this.btnCard7_Click);
+            this.btnCard7.Click += new System.EventHandler(this.pickCard);
             // 
             // btnCard10
             // 
             this.btnCard10.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.125F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnCard10.Location = new System.Drawing.Point(546, 162);
-            this.btnCard10.Margin = new System.Windows.Forms.Padding(2);
+            this.btnCard10.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.btnCard10.Name = "btnCard10";
             this.btnCard10.Size = new System.Drawing.Size(127, 73);
             this.btnCard10.TabIndex = 11;
             this.btnCard10.Text = "button11";
             this.btnCard10.UseVisualStyleBackColor = true;
-            this.btnCard10.Click += new System.EventHandler(this.btnCard10_Click);
+            this.btnCard10.Click += new System.EventHandler(this.pickCard);
             // 
             // btnCard15
             // 
             this.btnCard15.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.125F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnCard15.Location = new System.Drawing.Point(546, 238);
-            this.btnCard15.Margin = new System.Windows.Forms.Padding(2);
+            this.btnCard15.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.btnCard15.Name = "btnCard15";
             this.btnCard15.Size = new System.Drawing.Size(127, 73);
             this.btnCard15.TabIndex = 12;
             this.btnCard15.Text = "button12";
             this.btnCard15.UseVisualStyleBackColor = true;
-            this.btnCard15.Click += new System.EventHandler(this.btnCard15_Click);
+            this.btnCard15.Click += new System.EventHandler(this.pickCard);
             // 
             // btnCard20
             // 
             this.btnCard20.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.125F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnCard20.Location = new System.Drawing.Point(546, 315);
-            this.btnCard20.Margin = new System.Windows.Forms.Padding(2);
+            this.btnCard20.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.btnCard20.Name = "btnCard20";
             this.btnCard20.Size = new System.Drawing.Size(127, 73);
             this.btnCard20.TabIndex = 13;
             this.btnCard20.Text = "button13";
             this.btnCard20.UseVisualStyleBackColor = true;
-            this.btnCard20.Click += new System.EventHandler(this.btnCard20_Click);
+            this.btnCard20.Click += new System.EventHandler(this.pickCard);
             // 
             // btnCard25
             // 
             this.btnCard25.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.125F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnCard25.Location = new System.Drawing.Point(546, 391);
-            this.btnCard25.Margin = new System.Windows.Forms.Padding(2);
+            this.btnCard25.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.btnCard25.Name = "btnCard25";
             this.btnCard25.Size = new System.Drawing.Size(127, 73);
             this.btnCard25.TabIndex = 14;
             this.btnCard25.Text = "button14";
             this.btnCard25.UseVisualStyleBackColor = true;
-            this.btnCard25.Click += new System.EventHandler(this.btnCard25_Click);
+            this.btnCard25.Click += new System.EventHandler(this.pickCard);
             // 
             // btnCard24
             // 
             this.btnCard24.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.125F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnCard24.Location = new System.Drawing.Point(416, 391);
-            this.btnCard24.Margin = new System.Windows.Forms.Padding(2);
+            this.btnCard24.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.btnCard24.Name = "btnCard24";
             this.btnCard24.Size = new System.Drawing.Size(127, 73);
             this.btnCard24.TabIndex = 15;
             this.btnCard24.Text = "button15";
             this.btnCard24.UseVisualStyleBackColor = true;
-            this.btnCard24.Click += new System.EventHandler(this.btnCard24_Click);
+            this.btnCard24.Click += new System.EventHandler(this.pickCard);
             // 
             // btnCard23
             // 
             this.btnCard23.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.125F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnCard23.Location = new System.Drawing.Point(286, 391);
-            this.btnCard23.Margin = new System.Windows.Forms.Padding(2);
+            this.btnCard23.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.btnCard23.Name = "btnCard23";
             this.btnCard23.Size = new System.Drawing.Size(127, 73);
             this.btnCard23.TabIndex = 16;
             this.btnCard23.Text = "button16";
             this.btnCard23.UseVisualStyleBackColor = true;
-            this.btnCard23.Click += new System.EventHandler(this.btnCard23_Click);
+            this.btnCard23.Click += new System.EventHandler(this.pickCard);
             // 
             // btnCard22
             // 
             this.btnCard22.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.125F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnCard22.Location = new System.Drawing.Point(156, 391);
-            this.btnCard22.Margin = new System.Windows.Forms.Padding(2);
+            this.btnCard22.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.btnCard22.Name = "btnCard22";
             this.btnCard22.Size = new System.Drawing.Size(127, 73);
             this.btnCard22.TabIndex = 17;
             this.btnCard22.Text = "button17";
             this.btnCard22.UseVisualStyleBackColor = true;
-            this.btnCard22.Click += new System.EventHandler(this.btnCard22_Click);
+            this.btnCard22.Click += new System.EventHandler(this.pickCard);
             // 
             // btnCard13
             // 
             this.btnCard13.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.125F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnCard13.Location = new System.Drawing.Point(286, 238);
-            this.btnCard13.Margin = new System.Windows.Forms.Padding(2);
+            this.btnCard13.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.btnCard13.Name = "btnCard13";
             this.btnCard13.Size = new System.Drawing.Size(127, 73);
             this.btnCard13.TabIndex = 18;
             this.btnCard13.Text = "button18";
             this.btnCard13.UseVisualStyleBackColor = true;
-            this.btnCard13.Click += new System.EventHandler(this.btnCard13_Click);
+            this.btnCard13.Click += new System.EventHandler(this.pickCard);
             // 
             // btnCard8
             // 
             this.btnCard8.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.125F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnCard8.Location = new System.Drawing.Point(286, 162);
-            this.btnCard8.Margin = new System.Windows.Forms.Padding(2);
+            this.btnCard8.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.btnCard8.Name = "btnCard8";
             this.btnCard8.Size = new System.Drawing.Size(127, 73);
             this.btnCard8.TabIndex = 19;
             this.btnCard8.Text = "button19";
             this.btnCard8.UseVisualStyleBackColor = true;
-            this.btnCard8.Click += new System.EventHandler(this.btnCard8_Click);
+            this.btnCard8.Click += new System.EventHandler(this.pickCard);
             // 
             // btnCard17
             // 
             this.btnCard17.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.125F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnCard17.Location = new System.Drawing.Point(156, 315);
-            this.btnCard17.Margin = new System.Windows.Forms.Padding(2);
+            this.btnCard17.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.btnCard17.Name = "btnCard17";
             this.btnCard17.Size = new System.Drawing.Size(127, 73);
             this.btnCard17.TabIndex = 20;
             this.btnCard17.Text = "button20";
             this.btnCard17.UseVisualStyleBackColor = true;
-            this.btnCard17.Click += new System.EventHandler(this.btnCard17_Click);
+            this.btnCard17.Click += new System.EventHandler(this.pickCard);
             // 
             // btnCard12
             // 
             this.btnCard12.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.125F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnCard12.Location = new System.Drawing.Point(156, 238);
-            this.btnCard12.Margin = new System.Windows.Forms.Padding(2);
+            this.btnCard12.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.btnCard12.Name = "btnCard12";
             this.btnCard12.Size = new System.Drawing.Size(127, 73);
             this.btnCard12.TabIndex = 21;
             this.btnCard12.Text = "button21";
             this.btnCard12.UseVisualStyleBackColor = true;
-            this.btnCard12.Click += new System.EventHandler(this.btnCard12_Click);
+            this.btnCard12.Click += new System.EventHandler(this.pickCard);
             // 
             // btnCard9
             // 
             this.btnCard9.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.125F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnCard9.Location = new System.Drawing.Point(416, 162);
-            this.btnCard9.Margin = new System.Windows.Forms.Padding(2);
+            this.btnCard9.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.btnCard9.Name = "btnCard9";
             this.btnCard9.Size = new System.Drawing.Size(127, 73);
             this.btnCard9.TabIndex = 22;
             this.btnCard9.Text = "button22";
             this.btnCard9.UseVisualStyleBackColor = true;
-            this.btnCard9.Click += new System.EventHandler(this.btnCard9_Click);
+            this.btnCard9.Click += new System.EventHandler(this.pickCard);
             // 
             // btnCard19
             // 
             this.btnCard19.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.125F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnCard19.Location = new System.Drawing.Point(416, 315);
-            this.btnCard19.Margin = new System.Windows.Forms.Padding(2);
+            this.btnCard19.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.btnCard19.Name = "btnCard19";
             this.btnCard19.Size = new System.Drawing.Size(127, 73);
             this.btnCard19.TabIndex = 23;
             this.btnCard19.Text = "button23";
             this.btnCard19.UseVisualStyleBackColor = true;
-            this.btnCard19.Click += new System.EventHandler(this.btnCard19_Click);
+            this.btnCard19.Click += new System.EventHandler(this.pickCard);
             // 
             // btnCard18
             // 
             this.btnCard18.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.125F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnCard18.Location = new System.Drawing.Point(286, 315);
-            this.btnCard18.Margin = new System.Windows.Forms.Padding(2);
+            this.btnCard18.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.btnCard18.Name = "btnCard18";
             this.btnCard18.Size = new System.Drawing.Size(127, 73);
             this.btnCard18.TabIndex = 24;
             this.btnCard18.Text = "button24";
             this.btnCard18.UseVisualStyleBackColor = true;
-            this.btnCard18.Click += new System.EventHandler(this.btnCard18_Click);
+            this.btnCard18.Click += new System.EventHandler(this.pickCard);
             // 
             // btnCard14
             // 
             this.btnCard14.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.125F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnCard14.Location = new System.Drawing.Point(416, 238);
-            this.btnCard14.Margin = new System.Windows.Forms.Padding(2);
+            this.btnCard14.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.btnCard14.Name = "btnCard14";
             this.btnCard14.Size = new System.Drawing.Size(127, 73);
             this.btnCard14.TabIndex = 25;
             this.btnCard14.Text = "button25";
             this.btnCard14.UseVisualStyleBackColor = true;
-            this.btnCard14.Click += new System.EventHandler(this.btnCard14_Click);
+            this.btnCard14.Click += new System.EventHandler(this.pickCard);
             // 
             // label2
             // 
@@ -424,7 +426,7 @@
             // 
             this.txtClue.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.125F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtClue.Location = new System.Drawing.Point(746, 113);
-            this.txtClue.Margin = new System.Windows.Forms.Padding(2);
+            this.txtClue.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.txtClue.Name = "txtClue";
             this.txtClue.Size = new System.Drawing.Size(177, 23);
             this.txtClue.TabIndex = 30;
@@ -433,7 +435,7 @@
             // 
             this.txtGuessAmount.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.125F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtGuessAmount.Location = new System.Drawing.Point(839, 152);
-            this.txtGuessAmount.Margin = new System.Windows.Forms.Padding(2);
+            this.txtGuessAmount.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.txtGuessAmount.Name = "txtGuessAmount";
             this.txtGuessAmount.Size = new System.Drawing.Size(84, 23);
             this.txtGuessAmount.TabIndex = 32;
@@ -452,17 +454,18 @@
             // btnEndTurn
             // 
             this.btnEndTurn.Location = new System.Drawing.Point(821, 208);
-            this.btnEndTurn.Margin = new System.Windows.Forms.Padding(2);
+            this.btnEndTurn.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.btnEndTurn.Name = "btnEndTurn";
             this.btnEndTurn.Size = new System.Drawing.Size(100, 27);
             this.btnEndTurn.TabIndex = 33;
             this.btnEndTurn.Text = "End turn";
             this.btnEndTurn.UseVisualStyleBackColor = true;
+            this.btnEndTurn.Click += new System.EventHandler(this.btnEndTurn_Click);
             // 
             // button1
             // 
             this.button1.Location = new System.Drawing.Point(712, 276);
-            this.button1.Margin = new System.Windows.Forms.Padding(2);
+            this.button1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(100, 27);
             this.button1.TabIndex = 34;
@@ -472,7 +475,7 @@
             // btnEndtimer
             // 
             this.btnEndtimer.Location = new System.Drawing.Point(821, 276);
-            this.btnEndtimer.Margin = new System.Windows.Forms.Padding(2);
+            this.btnEndtimer.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.btnEndtimer.Name = "btnEndtimer";
             this.btnEndtimer.Size = new System.Drawing.Size(100, 27);
             this.btnEndtimer.TabIndex = 35;
@@ -482,7 +485,7 @@
             // btnSubmitClue
             // 
             this.btnSubmitClue.Location = new System.Drawing.Point(712, 208);
-            this.btnSubmitClue.Margin = new System.Windows.Forms.Padding(2);
+            this.btnSubmitClue.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.btnSubmitClue.Name = "btnSubmitClue";
             this.btnSubmitClue.Size = new System.Drawing.Size(100, 27);
             this.btnSubmitClue.TabIndex = 36;
@@ -537,7 +540,7 @@
             this.Controls.Add(this.btnCard16);
             this.Controls.Add(this.btnCard1);
             this.Controls.Add(this.lblTeamTurn);
-            this.Margin = new System.Windows.Forms.Padding(2);
+            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.Name = "BoardGame";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "BoardGame";
@@ -587,5 +590,7 @@
         private System.Windows.Forms.Button btnEndtimer;
         private System.Windows.Forms.Button btnSubmitClue;
         private System.Windows.Forms.Timer timer1;
+
+       
     }
 }

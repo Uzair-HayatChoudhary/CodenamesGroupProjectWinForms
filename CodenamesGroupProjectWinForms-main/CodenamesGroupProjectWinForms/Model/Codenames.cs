@@ -12,26 +12,14 @@ namespace CodenamesGroupProjectWinForms.Model
         blue,
         red
     }
-    public enum TeamRole
-    {
-        spymaster, 
-        fieldAgent
-    }
+        
     public class Codenames
     {
-        private TeamRole teamRole;
         private TeamTurn teamTurn;
 
-        public Codenames(int role, int turn)
+        public Codenames(int turn)
         {
-            teamRole = (TeamRole)role;
             teamTurn = (TeamTurn)turn;
-        }
-
-        public  TeamRole TeamRole
-        {
-            get { return teamRole; }
-            set { teamRole = value; }
         }
         
         public TeamTurn TeamTurn
@@ -58,7 +46,7 @@ namespace CodenamesGroupProjectWinForms.Model
             return clue;
         }
 
-        public static void changeTurn(Codenames gamestate)
+        public static void changeTeam(Codenames gamestate)
         {
             if (gamestate.teamTurn == 0)
             {
@@ -68,19 +56,25 @@ namespace CodenamesGroupProjectWinForms.Model
             {
                 gamestate.teamTurn = (TeamTurn)0;
             }
-
-            if(gamestate.teamRole == 0)
-            {
-                gamestate.teamRole = (TeamRole)1;
-            }
-            else
-            {
-                gamestate.teamRole= (TeamRole)0;
-            }
         }
-        public void EndTurn()
+        public static void EndTurn(Codenames gameState, Player currentPlayer)
         {
-
+            if (currentPlayer.Role == Role.fieldAgent)
+            {
+                currentPlayer.Role = Role.spymaster;
+                if (gameState.TeamTurn == TeamTurn.blue)
+                {
+                    gameState.TeamTurn = TeamTurn.red;
+                }
+                else
+                {
+                    gameState.TeamTurn = TeamTurn.blue;
+                }
+            }
+            else if(currentPlayer.Role == Role.spymaster)
+            {
+                currentPlayer.Role = Role.fieldAgent;
+            }
         }
 
     }

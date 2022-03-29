@@ -19,148 +19,31 @@ namespace CodenamesGroupProjectWinForms
         List<string> btn_words_list;
         Card[] roleTypes;
         Codenames gameState;
+        Player currentPlayer;
 
         public BoardGame()
         {
             InitializeComponent();
         }
 
-        private void label1_Click(object sender, EventArgs e)
+        void pickCard(Object sender, EventArgs e)
         {
 
-        }
-
-        private void btnCard1_Click(object sender, EventArgs e)
-        {
-            boardGameWords.RemoveWord(btnCard1.Text);
-        }
-
-        private void btnCard2_Click(object sender, EventArgs e)
-        {
-            boardGameWords.RemoveWord(btnCard2.Text);
-        }
-
-        private void btnCard3_Click(object sender, EventArgs e)
-        {
-            boardGameWords.RemoveWord(btnCard3.Text);
-        }
-
-        private void btnCard6_Click(object sender, EventArgs e)
-        {
-            boardGameWords.RemoveWord(btnCard6.Text);
-        }
-
-        private void btnCard4_Click(object sender, EventArgs e)
-        {
-            boardGameWords.RemoveWord(btnCard4.Text);
-        }
-
-        private void btnCard5_Click(object sender, EventArgs e)
-        {
-            boardGameWords.RemoveWord(btnCard5.Text);
-        }
-
-        private void btnCard7_Click(object sender, EventArgs e)
-        {
-            boardGameWords.RemoveWord(btnCard7.Text);
-        }
-
-        private void btnCard8_Click(object sender, EventArgs e)
-        {
-            boardGameWords.RemoveWord(btnCard8.Text);
-        }
-
-        private void btnCard9_Click(object sender, EventArgs e)
-        {
-            boardGameWords.RemoveWord(btnCard9.Text);
-        }
-
-        private void btnCard10_Click(object sender, EventArgs e)
-        {
-            boardGameWords.RemoveWord(btnCard10.Text);
-        }
-
-        private void btnCard11_Click(object sender, EventArgs e)
-        {
-            boardGameWords.RemoveWord(btnCard11.Text);
-        }
-
-        private void btnCard12_Click(object sender, EventArgs e)
-        {
-            boardGameWords.RemoveWord(btnCard12.Text);
-        }
-
-        private void btnCard13_Click(object sender, EventArgs e)
-        {
-            boardGameWords.RemoveWord(btnCard13.Text);
-        }
-
-        private void btnCard14_Click(object sender, EventArgs e)
-        {
-            boardGameWords.RemoveWord(btnCard14.Text);
-        }
-
-        private void btnCard15_Click(object sender, EventArgs e)
-        {
-            boardGameWords.RemoveWord(btnCard15.Text);
-        }
-
-        private void btnCard16_Click(object sender, EventArgs e)
-        {
-            boardGameWords.RemoveWord(btnCard16.Text);
-        }
-
-        private void btnCard17_Click(object sender, EventArgs e)
-        {
-            boardGameWords.RemoveWord(btnCard17.Text);
-        }
-
-        private void btnCard18_Click(object sender, EventArgs e)
-        {
-            boardGameWords.RemoveWord(btnCard18.Text);
-        }
-
-        private void btnCard19_Click(object sender, EventArgs e)
-        {
-            boardGameWords.RemoveWord(btnCard19.Text);
-        }
-
-        private void btnCard20_Click(object sender, EventArgs e)
-        {
-            boardGameWords.RemoveWord(btnCard20.Text);
-        }
-
-        private void btnCard21_Click(object sender, EventArgs e)
-        {
-            boardGameWords.RemoveWord(btnCard21.Text);
-        }
-
-        private void btnCard22_Click(object sender, EventArgs e)
-        {
-            boardGameWords.RemoveWord(btnCard22.Text);
-        }
-
-        private void btnCard23_Click(object sender, EventArgs e)
-        {
-            boardGameWords.RemoveWord(btnCard23.Text);
-        }
-
-        private void btnCard24_Click(object sender, EventArgs e)
-        {
-            boardGameWords.RemoveWord(btnCard24.Text);
-        }
-
-        private void btnCard25_Click(object sender, EventArgs e)
-        {
-            boardGameWords.RemoveWord(btnCard25.Text);
         }
 
         private void BoardGame_Load(object sender, EventArgs e)
         {
-            //GAMESTATE variable that tracks whose current turn it is
-            gameState = new Codenames(0, 1);
+            //GAMESTATE variable that tracks whose current team turn it is
+            //current player variable tracks which type of players turn it is, spymaster or field agent.
+            gameState = new Codenames(1);
+            currentPlayer = new Player();
             lblTeamTurn.Text = gameState.TeamTurn == 0 ? "Blue team" : "Red team";
-            llbRoleTurn.Text = gameState.TeamRole == 0 ? "Spymaster" : "Field Agents";
+            llbRoleTurn.Text = currentPlayer.Role == 0 ? "Spymaster" : "Field Agents";
+
+            //team class tracks the points for each team, we create them on load so that they can update whenever pick card is activated they can update.
+            //One tracker for each teams points is created
+            Team blueTeamPoints = new Team();
+            Team redTeamPoints = new Team();
 
             btn_words_list = Codenames.GenerateBoard(boardGameWords);
 
@@ -220,30 +103,6 @@ namespace CodenamesGroupProjectWinForms
                 }
             }
             boardState(true);
-            //for (int i = 0; i < 25; i++)
-            //{
-            //    switch (roleTypes[i].CardType)
-            //    {
-            //        case CardTypes.red:
-            //            btn_list[i].BackColor = Color.Red;
-            //            btn_list[i].ForeColor = Color.White;
-            //            break;
-            //        case CardTypes.blue:
-            //            btn_list[i].BackColor = Color.Blue;
-            //            btn_list[i].ForeColor = Color.White;
-            //            break;
-            //        case CardTypes.assassin:
-            //            btn_list[i].BackColor = Color.Gray;
-            //            btn_list[i].ForeColor = Color.White;
-            //            break;
-            //        case CardTypes.bystander:
-            //            btn_list[i].BackColor = Color.LightGoldenrodYellow;
-            //            btn_list[i].ForeColor = Color.Black;
-            //            break;
-            //    }
-            //}
-
-            
         }
 
         private void btnSubmitClue_Click(object sender, EventArgs e)
@@ -255,13 +114,16 @@ namespace CodenamesGroupProjectWinForms
             int guessAmount = Convert.ToInt32(guessNumber);
             string guess = txtClue.Text.Trim();
             List<string> currentWords = boardGameWords.GetBoardWords;
-            
+            string validationMessage = "";
 
             //Clue validation, if it is empty or invalid
-            if (string.IsNullOrEmpty(guess) ||guessAmount < 0 )
+
+            validationMessage = Clue.checkValidity(guess, guessAmount);
+
+            if (validationMessage != "" )
             {
                 checker = true;
-                MessageBox.Show("Clue or Guess amount cannot be empty", "Invalid Clue", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                MessageBox.Show(validationMessage, "Invalid Clue", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
 
             for (int i = 0; i < currentWords.Count; i++)
@@ -278,23 +140,35 @@ namespace CodenamesGroupProjectWinForms
             }
             else
             {
-                //Creating the clue if submitted guess and hintnumber pass all validations
+                //Creating the clue if submitted guess and hint number pass all validations
                 txtClue.Text = "";
                 txtGuessAmount.Text = "";
-                Clue clue = Codenames.giveClue(guess, guessAmount + 1);
-                Codenames.changeTurn(gameState);
+                Clue clue = Codenames.giveClue(guess, guessAmount);
+                Player.changeRole(currentPlayer);
                 boardState(false);
-                lblTeamTurn.Text = gameState.TeamTurn == 0 ? "Blue team" : "Red team";
-                llbRoleTurn.Text = gameState.TeamRole == 0 ? "Spymaster" : "Field Agents";
-
-                MessageBox.Show("It is now " + (gameState.TeamTurn == 0 ? "Blue team" : "Red team") + " Field Agents turn", "Turn Change", MessageBoxButtons.OK,MessageBoxIcon.Exclamation);
+                ChangeTurnMessage();
             }
+        }
+
+        private void btnEndTurn_Click(object sender, EventArgs e)
+        {
+            Codenames.EndTurn(gameState, currentPlayer);
+            if(currentPlayer.Role == Role.spymaster)
+            {
+                boardState(true);
+            }
+            else
+            {
+                boardState(false);
+            }
+            ChangeTurnMessage();
         }
 
         public void boardState(bool isSpymasterTurn)
         {
             //if isSpymasterTurn is true, then show all the colors. if it is false show just plain colors
             //NEED TO IMPLEMENT TO SHOW PICKED CARDS AND REMOVE WORDS WHEN THE CARD HAS BEEN PICKED!!
+            //implemented not flipping already picked cards
             if (isSpymasterTurn)
             {
                 for (int i = 0; i < 25; i++)
@@ -302,35 +176,44 @@ namespace CodenamesGroupProjectWinForms
                     switch (roleTypes[i].CardType)
                     {
                         case CardTypes.red:
-                            btn_list[i].BackColor = Color.Red;
-                            btn_list[i].ForeColor = Color.White;
+                            if (roleTypes[i].IsFlipped == false)
+                            {
+                                btn_list[i].BackColor = Color.Red;
+                                btn_list[i].ForeColor = Color.White;
+                            }
                             break;
                         case CardTypes.blue:
-                            btn_list[i].BackColor = Color.Blue;
-                            btn_list[i].ForeColor = Color.White;
+                            if (roleTypes[i].IsFlipped == false)
+                            {
+                                btn_list[i].BackColor = Color.Blue;
+                                btn_list[i].ForeColor = Color.White;
+                            }
                             break;
                         case CardTypes.assassin:
-                            btn_list[i].BackColor = Color.Gray;
-                            btn_list[i].ForeColor = Color.White;
+                            if (roleTypes[i].IsFlipped == false)
+                            {
+                                btn_list[i].BackColor = Color.Gray;
+                                btn_list[i].ForeColor = Color.White;
+                            }
                             break;
                         case CardTypes.bystander:
-                            btn_list[i].BackColor = Color.LightGoldenrodYellow;
-                            btn_list[i].ForeColor = Color.Black;
+                            if (roleTypes[i].IsFlipped == false)
+                            {
+                                btn_list[i].BackColor = Color.LightGoldenrodYellow;
+                                btn_list[i].ForeColor = Color.Black;
+                            }
                             break;
                     }
                 }
             }
-            else
-            {
-                for(int i = 0; i < 25; i++)
-                {
-                    btn_list[i].BackColor = Color.LightGoldenrodYellow;
-                    btn_list[i].ForeColor = Color.Black;
-                }
-            }
-            
         }
 
+        public void ChangeTurnMessage()
+        {
+            lblTeamTurn.Text = gameState.TeamTurn == 0 ? "Blue team" : "Red team";
+            llbRoleTurn.Text = currentPlayer.Role == 0 ? "Spymaster" : "Field Agents";
+            MessageBox.Show("It is now " + (gameState.TeamTurn == 0 ? "Blue team" : "Red team") + " " + (currentPlayer.Role == 0 ? "spymaster" : "field Agent"), "Turn Change", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+        }
     }
 }
 

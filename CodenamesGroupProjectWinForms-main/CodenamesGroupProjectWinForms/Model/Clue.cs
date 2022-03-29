@@ -27,5 +27,16 @@ namespace CodenamesGroupProjectWinForms.Model
             get { return potentialCardNumber; }
             set { potentialCardNumber = value; }
         }
+
+        public static string checkValidity(string guess, int guessAmount)
+        {
+            string returnMessage = "";
+            if (string.IsNullOrEmpty(guess) || guessAmount < 0)
+            {
+                returnMessage += "Clue or guess amount cannot be empty";
+            }
+
+            return returnMessage;
+        }
     }
 }

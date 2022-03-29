@@ -19,10 +19,8 @@ namespace CodenamesGroupProjectWinForms.Model
         public BoardGameWords()
         {
             boardWords = new List<string>();
-            //var allWords = new List<string>();
 
             var file = new StreamReader("wordList.txt");
-
         }
 
 
@@ -91,7 +89,6 @@ namespace CodenamesGroupProjectWinForms.Model
 
                 }
             }
-
         }
 
         public void RemoveWord(string button_text)
