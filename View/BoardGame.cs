@@ -1,25 +1,25 @@
-﻿using System;
+﻿using CodenamesGroupProjectWinForms.Model;
+using System;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
 using System.Drawing;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
-using CodenamesGroupProjectWinForms.Model;
 
-//LINE 296, ONE THING TO DO FOR SURE!!
 namespace CodenamesGroupProjectWinForms
 {
     public partial class BoardGame : Form
     {
+        public static string winningTeam;
+        public static int winningTeamPoints;
         BoardGameWords boardGameWords = new BoardGameWords();
         List<Button> btn_list;
         List<string> btn_words_list;
         Card[] roleTypes;
         Codenames gameState;
         Player currentPlayer;
+        Clue clue;
+        int cardsPicked;
+        Team redTeam = new Team(), blueTeam = new Team();
 
         const int TimeToAct = 5;
         int timeLeft = TimeToAct;
@@ -29,11 +29,6 @@ namespace CodenamesGroupProjectWinForms
             InitializeComponent();
 
             lblCountDown.Text = timeLeft.ToString();
-        }
-
-        void pickCard(Object sender, EventArgs e)
-        {
-
         }
 
         private void BoardGame_Load(object sender, EventArgs e)
@@ -112,51 +107,186 @@ namespace CodenamesGroupProjectWinForms
 
         private void btnSubmitClue_Click(object sender, EventArgs e)
         {
-            //Flag to check if the clue passes validations
-            bool checker = false;
-            string guessNumber;
-            guessNumber = txtGuessAmount.Text.Trim();
-            int guessAmount = Convert.ToInt32(guessNumber);
-            string guess = txtClue.Text.Trim();
-            List<string> currentWords = boardGameWords.GetBoardWords;
-            string validationMessage = "";
-
-            //Clue validation, if it is empty or invalid
-
-            validationMessage = Clue.checkValidity(guess, guessAmount);
-
-            if (validationMessage != "" )
+            
+            if(currentPlayer.Role == Role.spymaster)
             {
-                checker = true;
-                MessageBox.Show(validationMessage, "Invalid Clue", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-            }
+                //Flag to check if the clue passes validations
+                bool checker = false;
+                int guessNumber = 0;
+                string guess = txtClue.Text.Trim();
+                List<string> currentWords = boardGameWords.GetBoardWords;
+                string validationMessage = "";
 
-            for (int i = 0; i < currentWords.Count; i++)
-            {
-                if (guess == currentWords.ElementAt(i))
+                if (!string.IsNullOrEmpty(txtGuessAmount.Text))
+                {
+                    guessNumber = Convert.ToInt32(txtGuessAmount.Text.Trim());
+                }
+
+                //Clue validation, if it is empty or invalid
+
+                validationMessage = Clue.checkValidity(guess, guessNumber);
+
+                if (validationMessage != "")
                 {
                     checker = true;
+                    MessageBox.Show(validationMessage, "Invalid Clue", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                }
+
+                for (int i = 0; i < currentWords.Count; i++)
+                {
+                    if (guess == currentWords.ElementAt(i))
+                    {
+                        checker = true;
+                    }
+                }
+
+                if (checker)
+                {
+                    MessageBox.Show("Clue cannot be part of the words on the board currently visible, please try again", "Invalid clue", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+                else
+                {
+                    //Creating the clue if submitted guess and hint number pass all validations
+                    txtClue.Text = "";
+                    txtGuessAmount.Text = "";
+                    clue = Codenames.giveClue(guess, guessNumber + 1);
+                    Player.changeRole(currentPlayer);
+                    btnSubmitClue.Enabled = false;
+                    boardState(false);
+                    ChangeTurnMessage();
+                    cardsPicked = 1;
                 }
             }
+        }
 
-            if (checker)
+        void pickCard(Object sender, EventArgs e)
+        {
+            Button pickedButton = sender as Button;
+            int pickedButtonIndex = 0;
+            int counter = 0;
+
+            foreach (Button btn in btn_list)
             {
-                MessageBox.Show("Clue cannot be part of the words on the board currently visible, please try again", "Invalid clue", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                if (btn == pickedButton)
+                {
+                    pickedButtonIndex = counter;
+                }
+                counter++;
             }
-            else
+            
+            //if red team selects proper card
+            if(gameState.TeamTurn == TeamTurn.red && roleTypes[pickedButtonIndex].CardType == CardTypes.red && roleTypes[pickedButtonIndex].IsFlipped == false)
             {
-                //Creating the clue if submitted guess and hint number pass all validations
-                txtClue.Text = "";
-                txtGuessAmount.Text = "";
-                Clue clue = Codenames.giveClue(guess, guessAmount);
-                Player.changeRole(currentPlayer);
+               roleTypes[pickedButtonIndex].IsFlipped = true;
+               boardGameWords.RemoveWord(pickedButton.Text);
+               redTeam.addPoint();
+               lblRedTeamPoints.Text = redTeam.Points.ToString();
+               cardsPicked++;
+               boardState(false);
+               if (redTeam.Points == 9)
+               {
+                    endGame();
+               }
+               if (cardsPicked == clue.PotentialCardNumber + 1)
+               {
+                  btnSubmitClue.Enabled = true;
+                  Codenames.changeTeam(gameState);
+                  Player.changeRole(currentPlayer);
+                  boardState(true);
+                  ChangeTurnMessage();
+               }
+            }
+            //If red team select blue team card
+            if(gameState.TeamTurn == TeamTurn.red && roleTypes[pickedButtonIndex].CardType == CardTypes.blue && roleTypes[pickedButtonIndex].IsFlipped == false)
+            {
+                roleTypes[pickedButtonIndex].IsFlipped = true;
+                boardGameWords.RemoveWord(pickedButton.Text);
+                blueTeam.addPoint();
+                lblBlueTeamPoints.Text = blueTeam.Points.ToString();
+                cardsPicked++;
                 boardState(false);
+                if (blueTeam.Points == 8)
+                {
+                    endGame();
+                }
+                btnSubmitClue.Enabled = true;
+                timer.Stop();
+                timeLeft = TimeToAct;
+                lblCountDown.Text = timeLeft.ToString();
+                Codenames.EndTurn(gameState, currentPlayer);
+                boardState(true);
                 ChangeTurnMessage();
+            }
+            //If blue team select proper card
+            else if(gameState.TeamTurn == TeamTurn.blue && roleTypes[pickedButtonIndex].CardType ==  CardTypes.blue && roleTypes[pickedButtonIndex].IsFlipped == false){
+              roleTypes[pickedButtonIndex].IsFlipped = true;
+              boardGameWords.RemoveWord(pickedButton.Text);
+              blueTeam.addPoint();
+              lblBlueTeamPoints.Text = blueTeam.Points.ToString();
+              cardsPicked++;
+                boardState(false);
+                if (blueTeam.Points == 8)
+                {
+                    endGame();
+                }
+                if (cardsPicked == clue.PotentialCardNumber + 1)
+                {
+                    btnSubmitClue.Enabled = true;
+                    Codenames.changeTeam(gameState);
+                    Player.changeRole(currentPlayer);
+                    boardState(true);
+                    ChangeTurnMessage();
+                }
+            }
+            //If blue team selects red card
+            else if (gameState.TeamTurn == TeamTurn.blue && roleTypes[pickedButtonIndex].CardType == CardTypes.red && roleTypes[pickedButtonIndex].IsFlipped == false)
+            {
+                roleTypes[pickedButtonIndex].IsFlipped = true;
+                boardGameWords.RemoveWord(pickedButton.Text);
+                redTeam.addPoint();
+                lblRedTeamPoints.Text = redTeam.Points.ToString();
+                cardsPicked++;
+                boardState(false);
+                if (redTeam.Points == 9)
+                {
+                    endGame();
+                }
+                btnSubmitClue.Enabled = true;
+                timer.Stop();
+                timeLeft = TimeToAct;
+                lblCountDown.Text = timeLeft.ToString();
+                Codenames.EndTurn(gameState, currentPlayer);
+                boardState(true);
+                ChangeTurnMessage();
+            }
+            //if any team selects the bystander card
+            else  if(roleTypes[pickedButtonIndex].CardType == CardTypes.bystander && roleTypes[pickedButtonIndex].IsFlipped == false)
+            {
+               roleTypes[pickedButtonIndex].IsFlipped = true;
+               boardGameWords.RemoveWord(pickedButton.Text);
+               btnSubmitClue.Enabled = true;
+               Codenames.changeTeam(gameState);
+               Player.changeRole(currentPlayer);
+               boardState(true);
+               ChangeTurnMessage();
+            }
+            // if any team select the assassing card
+            else if(roleTypes[pickedButtonIndex].CardType == CardTypes.assassin && roleTypes[pickedButtonIndex].IsFlipped == false)
+            {
+                endGame(true);
             }
         }
 
         private void btnEndTurn_Click(object sender, EventArgs e)
         {
+            if (!btnSubmitClue.Enabled)
+            {
+                btnSubmitClue.Enabled = true;
+            }
+            timer.Stop();
+            timeLeft = TimeToAct;
+            lblCountDown.Text = timeLeft.ToString();
+
             Codenames.EndTurn(gameState, currentPlayer);
             if(currentPlayer.Role == Role.spymaster)
             {
@@ -169,11 +299,8 @@ namespace CodenamesGroupProjectWinForms
             ChangeTurnMessage();
         }
 
-        public void boardState(bool isSpymasterTurn)
+        private void boardState(bool isSpymasterTurn)
         {
-            //if isSpymasterTurn is true, then show all the colors. if it is false show just plain colors
-            //NEED TO IMPLEMENT TO SHOW PICKED CARDS AND REMOVE WORDS WHEN THE CARD HAS BEEN PICKED!!
-            //implemented not flipping already picked cards
             if (isSpymasterTurn)
             {
                 for (int i = 0; i < 25; i++)
@@ -186,12 +313,22 @@ namespace CodenamesGroupProjectWinForms
                                 btn_list[i].BackColor = Color.Red;
                                 btn_list[i].ForeColor = Color.White;
                             }
+                            else
+                            {
+                                btn_list[i].BackColor = Color.Red;
+                                btn_list[i].ForeColor = Color.Red;
+                            }
                             break;
                         case CardTypes.blue:
                             if (roleTypes[i].IsFlipped == false)
                             {
                                 btn_list[i].BackColor = Color.Blue;
                                 btn_list[i].ForeColor = Color.White;
+                            }
+                            else
+                            {
+                                btn_list[i].BackColor = Color.Blue;
+                                btn_list[i].ForeColor = Color.Blue;
                             }
                             break;
                         case CardTypes.assassin:
@@ -207,7 +344,41 @@ namespace CodenamesGroupProjectWinForms
                                 btn_list[i].BackColor = Color.LightGoldenrodYellow;
                                 btn_list[i].ForeColor = Color.Black;
                             }
+                            else
+                            {
+                                btn_list[i].BackColor = Color.LightGoldenrodYellow;
+                                btn_list[i].ForeColor = Color.LightGoldenrodYellow;
+                            }
                             break;
+                    }
+                }
+            }
+            else
+            {
+                for (int i = 0; i < 25; i++)
+                {
+                    if(roleTypes[i].IsFlipped == false)
+                    {
+                        btn_list[i].BackColor = Color.LightGoldenrodYellow;
+                        btn_list[i].ForeColor = Color.Black;
+                    }
+                    else
+                    {
+                        if(roleTypes[i].CardType == CardTypes.red)
+                        {
+                            btn_list[i].BackColor= Color.Red;
+                            btn_list[i].ForeColor= Color.Red;
+                        }
+                        else if (roleTypes[i].CardType == CardTypes.blue)
+                        {
+                            btn_list[i].BackColor = Color.Blue;
+                            btn_list[i].ForeColor = Color.Blue;
+                        }
+                        if (roleTypes[i].CardType == CardTypes.bystander)
+                        {
+                            btn_list[i].BackColor = Color.LightGoldenrodYellow;
+                            btn_list[i].ForeColor = Color.LightGoldenrodYellow;
+                        }
                     }
                 }
             }
@@ -241,31 +412,6 @@ namespace CodenamesGroupProjectWinForms
            
         }
 
-        private void btnEndtimer_Click(object sender, EventArgs e)
-        {
-
-            if(timer.Enabled)
-            {
-                timer.Stop();
-                //MessageBox.Show("Your turn is now ended");
-                timeLeft = TimeToAct;
-                lblCountDown.Text = timeLeft.ToString();
-
-                Codenames.EndTurn(gameState, currentPlayer);
-                if (currentPlayer.Role == Role.spymaster)
-                {
-                    boardState(true);
-                }
-                else
-                {
-                    boardState(false);
-                }
-                ChangeTurnMessage();
-            }
-
-            
-        }
-
         private void timer_Tick_1(object sender, EventArgs e)
         {
             if (timeLeft > 0)
@@ -277,13 +423,10 @@ namespace CodenamesGroupProjectWinForms
 
             else
             {
-                //  myTimer.Stop();
-               // MessageBox.Show("Your turn is now ended");
                 timeLeft = TimeToAct;
                 lblCountDown.Text = timeLeft.ToString();
                 timer.Stop();
 
-                //end turn
                 Codenames.EndTurn(gameState, currentPlayer);
                 if (currentPlayer.Role == Role.spymaster)
                 {
@@ -293,13 +436,54 @@ namespace CodenamesGroupProjectWinForms
                 {
                     boardState(false);
                 }
-                ChangeTurnMessage();
-                // MessageBox.Show("Your turn is now ended");
-                // MessageBox.Show("The timer is done");
+                ChangeTurnMessage();;
 
 
             }
             
+        }
+
+        private void btnEndGame_Click(object sender, EventArgs e)
+        {
+            endGame();
+        }
+
+        private void endGame(bool assassinPicked = false)
+        {
+            if (assassinPicked)
+            {
+                if(gameState.TeamTurn == TeamTurn.red)
+                {
+                    winningTeam = "blue team";
+                    winningTeamPoints = blueTeam.Points;
+                }
+                else
+                {
+                    winningTeam = "red team";
+                    winningTeamPoints = redTeam.Points;
+                }
+            }
+            else
+            {
+                if (blueTeam.Points == redTeam.Points)
+                {
+                    winningTeam = "draw";
+                }
+                else if (blueTeam.Points > redTeam.Points)
+                {
+                    winningTeam = "blue team";
+                    winningTeamPoints = blueTeam.Points;
+                }
+                else
+                {
+                    winningTeam = "red team";
+                    winningTeamPoints = redTeam.Points;
+                }
+            }
+            this.Hide();
+            View.EndGame newForm = new View.EndGame();
+            newForm.Show();
+
         }
     }
 }

@@ -68,3 +68,16 @@ C:\Users\Uzair\Downloads\CodenamesGroupProjectWinForms-main(1)\CodenamesGroupPro
 C:\Users\Uzair\Downloads\CodenamesGroupProjectWinForms-main(1)\CodenamesGroupProjectWinForms-main\CodenamesGroupProjectWinForms-main\CodenamesGroupProjectWinForms\obj\Debug\CodenamesGroupProjectWinForms.csproj.CoreCompileInputs.cache
 C:\Users\Uzair\Downloads\CodenamesGroupProjectWinForms-main(1)\CodenamesGroupProjectWinForms-main\CodenamesGroupProjectWinForms-main\CodenamesGroupProjectWinForms\obj\Debug\CodenamesGroupProjectWinForms.exe
 C:\Users\Uzair\Downloads\CodenamesGroupProjectWinForms-main(1)\CodenamesGroupProjectWinForms-main\CodenamesGroupProjectWinForms-main\CodenamesGroupProjectWinForms\obj\Debug\CodenamesGroupProjectWinForms.pdb
+C:\Users\Uzair\Desktop\CodenamesGroupProjectWinForms\bin\Debug\CodenamesGroupProjectWinForms.exe
+C:\Users\Uzair\Desktop\CodenamesGroupProjectWinForms\bin\Debug\CodenamesGroupProjectWinForms.exe.config
+C:\Users\Uzair\Desktop\CodenamesGroupProjectWinForms\obj\Debug\CodenamesGroupProjectWinForms.csproj.AssemblyReference.cache
+C:\Users\Uzair\Desktop\CodenamesGroupProjectWinForms\obj\Debug\CodenamesGroupProjectWinForms.csproj.SuggestedBindingRedirects.cache
+C:\Users\Uzair\Desktop\CodenamesGroupProjectWinForms\obj\Debug\CodenamesGroupProjectWinForms.BoardGame.resources
+C:\Users\Uzair\Desktop\CodenamesGroupProjectWinForms\obj\Debug\CodenamesGroupProjectWinForms.View.EndGame.resources
+C:\Users\Uzair\Desktop\CodenamesGroupProjectWinForms\obj\Debug\CodenamesGroupProjectWinForms.MainRulesPage.resources
+C:\Users\Uzair\Desktop\CodenamesGroupProjectWinForms\obj\Debug\CodenamesGroupProjectWinForms.Properties.Resources.resources
+C:\Users\Uzair\Desktop\CodenamesGroupProjectWinForms\obj\Debug\CodenamesGroupProjectWinForms.csproj.GenerateResource.cache
+C:\Users\Uzair\Desktop\CodenamesGroupProjectWinForms\obj\Debug\CodenamesGroupProjectWinForms.csproj.CoreCompileInputs.cache
+C:\Users\Uzair\Desktop\CodenamesGroupProjectWinForms\obj\Debug\CodenamesGroupProjectWinForms.exe
+C:\Users\Uzair\Desktop\CodenamesGroupProjectWinForms\obj\Debug\CodenamesGroupProjectWinForms.pdb
+C:\Users\Uzair\Desktop\CodenamesGroupProjectWinForms\bin\Debug\CodenamesGroupProjectWinForms.pdb

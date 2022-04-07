@@ -73,8 +73,21 @@ namespace CodenamesGroupProjectWinForms.Model
             }
             else if(currentPlayer.Role == Role.spymaster)
             {
-                currentPlayer.Role = Role.fieldAgent;
+                if (gameState.TeamTurn == TeamTurn.blue)
+                {
+                    gameState.TeamTurn = TeamTurn.red;
+                }
+                else
+                {
+                    gameState.TeamTurn = TeamTurn.blue;
+                }
             }
+        }
+
+        public static void endGame(bool assassingPicked, Team winningTeam)
+        {
+            
+
         }
 
     }
