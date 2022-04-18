@@ -31,7 +31,8 @@ namespace CodenamesGroupProjectWinForms.Model
         public static string checkValidity(string guess, int guessAmount)
         {
             string returnMessage = "";
-            if (string.IsNullOrEmpty(guess) || guessAmount < 0)
+            
+            if (string.IsNullOrEmpty(guess.ToLower()) || guessAmount < 0)
             {
                 returnMessage += "Clue or guess amount cannot be empty";
             }

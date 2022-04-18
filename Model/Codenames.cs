@@ -57,6 +57,19 @@ namespace CodenamesGroupProjectWinForms.Model
                 gamestate.teamTurn = (TeamTurn)0;
             }
         }
+
+        public static bool CheckWordList(List<string> wordList, string potentialClue)
+        {
+
+            for (int i = 0; i < wordList.Count; i++)
+            {
+                if (potentialClue.ToLower() == wordList.ElementAt(i))
+                {
+                    return true;
+                }
+            }
+            return false;
+        }
         public static void EndTurn(Codenames gameState, Player currentPlayer)
         {
             if (currentPlayer.Role == Role.fieldAgent)

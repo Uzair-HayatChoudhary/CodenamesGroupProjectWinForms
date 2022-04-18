@@ -132,13 +132,7 @@ namespace CodenamesGroupProjectWinForms
                     MessageBox.Show(validationMessage, "Invalid Clue", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 }
 
-                for (int i = 0; i < currentWords.Count; i++)
-                {
-                    if (guess == currentWords.ElementAt(i))
-                    {
-                        checker = true;
-                    }
-                }
+                checker = Codenames.CheckWordList(currentWords, guess);
 
                 if (checker)
                 {
@@ -448,7 +442,7 @@ namespace CodenamesGroupProjectWinForms
             endGame();
         }
 
-        private void endGame(bool assassinPicked = false)
+        public void endGame(bool assassinPicked = false)
         {
             if (assassinPicked)
             {
